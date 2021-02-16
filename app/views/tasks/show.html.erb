@@ -1,0 +1,9 @@
+<h2> The submitted task is </h2><br>
+
+
+
+<h4><%= @task.title %><br> </h4>
+<%= @task.body %>
+<hr>
+<%= link_to "Edit", edit_task_path(@task), :class => 'btn btn-default' %> <p> edited last
+<%= link_to "Delete", task_path(@task), method: :delete, data: {confirm: "do you want to delete"}, :class => 'btn btn-default' %>

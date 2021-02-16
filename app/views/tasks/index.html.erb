@@ -1,0 +1,9 @@
+<h1> Task Available <h1>
+
+<% @task.each do |item| %>
+  <div class="well">
+  <h3><%= item.title %></h3>
+  <p> <%= item.body %> </p>
+  <%= link_to "Read more" , task_path(item), :class=> 'btn btn-default' %>
+  </div>
+<% end %>
