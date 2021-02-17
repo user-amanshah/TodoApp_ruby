@@ -25,8 +25,22 @@
         <li><%= link_to "Home", home_path %></li>
       </ul>
    
+
         <ul class="nav navbar-nav navbar-right"> 
         <li>  <%= link_to "Create Task", new_task_path %></li>
+        </ul>
+
+        <% if !user_signed_in? %>
+          <ul class="nav navbar-nav navbar-right"> 
+          <li>  <%= link_to "Sign up", new_user_registration_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right"> 
+          <li>  <%= link_to "Sign In", new_user_session_path %></li>
+           </ul>
+        <% end%>
+
+        <ul class="nav navbar-nav navbar-right"> 
+        <li>  <%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
         </ul>
     </div>
   
@@ -37,7 +51,8 @@
 </div> 
 </nav>
    
-   
+   <p class="notice"><%= notice%></p>
+    <p class="alert"><%= alert%></p>
      <div class='container'>
         <%=yield %>
     </div>

@@ -1,11 +1,15 @@
 class TasksController < ApplicationController
+
+    before_action :authenticate_user!
     def index
-        @task = Task.all()
+        # @task = Task.all()
+        #  @task=  Task.joins(:user).where(:users => { :id => current_user })
+         @task = Task.where(:user_id => current_user)
     
     end
 
     def new
-        @task = Task.new
+        @task = current_user.tasks.build
     end
 
     def show
@@ -16,7 +20,8 @@ class TasksController < ApplicationController
         # output =params[:task].inspect
         # render plain: output
 
-        @task = Task.new(post_params)
+        @task = current_user.tasks.build(post_params)
+
         if(@task.save)
             redirect_to @task
         else
